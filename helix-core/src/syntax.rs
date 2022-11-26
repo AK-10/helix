@@ -82,6 +82,8 @@ pub struct LanguageConfiguration {
     pub shebangs: Vec<String>, // interpreter(s) associated with language
     pub roots: Vec<String>,        // these indicate project roots <.git, Cargo.toml>
     pub comment_token: Option<String>,
+    pub block_comment_start: Option<String>, // block comment start </*, {->
+    pub block_comment_end: Option<String>, // block comment end <*/, -}>
     pub max_line_length: Option<usize>,
 
     #[serde(default, skip_serializing, deserialize_with = "deserialize_lsp_config")]

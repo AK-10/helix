@@ -56,6 +56,8 @@ fn find_line_comment(
     (commented, to_change, min, margin)
 }
 
+fn find_block_comments
+
 #[must_use]
 pub fn toggle_line_comments(doc: &Rope, selection: &Selection, token: Option<&str>) -> Transaction {
     let text = doc.slice(..);
@@ -139,3 +141,4 @@ mod test {
         // TODO: account for uncommenting with uneven comment indentation
     }
 }
+

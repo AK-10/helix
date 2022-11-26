@@ -4043,6 +4043,22 @@ fn toggle_comments(cx: &mut Context) {
     exit_select_mode(cx);
 }
 
+fn block_comment(cx: &mut Context) {
+    let (view, doc) = current!(cx.editor);
+
+    let (token_start, token_end) = doc.language_config().map(|lc| {
+        (
+            lc.block_comment_start.as_ref(),
+            lc.block_comment_end.as_ref(),
+        )
+    });
+    // TODO: implement block comment
+    let transaction = comment::block_comment(doc.text(), doc.selection(view.id), token);
+
+    apply_transaction(&transaction, doc, view);
+    exit_select_mode(cx);
+}
+
 fn rotate_selections(cx: &mut Context, direction: Direction) {
     let count = cx.count();
     let (view, doc) = current!(cx.editor);
